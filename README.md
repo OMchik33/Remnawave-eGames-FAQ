@@ -232,9 +232,6 @@ networks:
   </details>
 
 
-
-<div style="text-align: center">⁂</div>
-
 ---
 
 1.: https://remna.st/docs/overview/quick-start
