@@ -264,4 +264,4 @@ networks:
 
 1.: https://remna.st/docs/overview/quick-start
 
-2.: https://github.com/eGames/remnawave-reverse-proxy
+2.: https://github.com/eGamesAPI/remnawave-reverse-proxy/blob/main/README-RU.md
