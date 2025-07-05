@@ -265,9 +265,3 @@ networks:
 1.: https://remna.st/docs/overview/quick-start
 
 2.: https://github.com/eGames/remnawave-reverse-proxy
-
-3.: https://github.com/sm1ky/remnawave-api
-
-4.: https://prometheus.io/docs
-
-5.: https://remna.st/docs/install/remnawave-subscription-page
