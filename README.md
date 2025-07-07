@@ -152,7 +152,7 @@ scrape_configs:
 ---
 
 
-### Модификация конфигурации Nginx для внешнего доступа к API (раздел на реконструкции, не использовать!)
+### Модификация конфигурации Nginx для внешнего доступа к API
 
 <details>
   <summary>Конфигурация Nginx</summary>
@@ -161,9 +161,6 @@ scrape_configs:
 
  
   ```
- add_header Set-Cookie $set_cookie_header;
-
-    
     location ^~ /api/ {
         proxy_http_version 1.1;
         proxy_pass http://remnawave;
