@@ -159,17 +159,12 @@ scrape_configs:
 
   Добавляем в `nginx.conf` в блок сервера с доменом панели `server_name panel.domen.com;`
 
-  здесь вместо `allow 192.168.1.100;` вписываем свой IP адрес сервера, с которого будем коннектится на API Remnawave
-
+ 
   ```
  add_header Set-Cookie $set_cookie_header;
 
     
     location ^~ /api/ {
-        allow 94.******/32;
-        allow 127.0.0.1;
-        deny all;
-        
         proxy_http_version 1.1;
         proxy_pass http://remnawave;
         proxy_set_header Host $host;
@@ -186,8 +181,7 @@ scrape_configs:
 
   ```
 
-  94.****** Нужно заменить на IP адрес сервера, с которого будете подключаться к API
-
+ 
   Это открывает доступ к API из-вне, при этом API будут по прежнему защищены токеном авторизации
 
   **ВАЖНО:** После этого в `.env` файле замените строку `IS_DOCS_ENABLED=true` на `IS_DOCS_ENABLED=false`, чтобы не "светить" документацией во внешний интернет
