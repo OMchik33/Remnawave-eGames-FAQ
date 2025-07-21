@@ -269,6 +269,8 @@ apt install nginx
 
 Получение SSL-сертификатов:
 
+> Домен 3 уровня уже должен быть настроен на IP адрес мониторингового сервера
+
 ```bash
 sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx -d sub.mydomain.com
