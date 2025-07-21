@@ -254,6 +254,9 @@ cd /opt/monitoring
 docker compose up -d
 ```
 
+<img width="423" height="126" alt="image" src="https://github.com/user-attachments/assets/320f6a65-435b-4d27-b23b-491592e5a03e" />
+
+
 ---
 
 ## 🌐 5. Настройка Nginx и SSL
