@@ -99,12 +99,27 @@ WantedBy=multi-user.target
 
 > Замените `remnauser@REMNA_SERVER_IP`, это ssh логин и адрес сервера панели Remnawave.
 
+>На первом сервере (где запускается autossh) нужно добавить ключ второго сервера в known_hosts, чтобы избежать ошибки проверки подлинности хоста:
+
+```
+ssh-keyscan -H 12.345.678.91 >> ~/.ssh/known_hosts
+```
+
+где 12.345.678.91 - IP адрес панели Remnawave
+
+
 5. Запуск сервиса:
 
 ```bash
 sudo systemctl daemon-reexec
 sudo systemctl enable remna-tunnel
 sudo systemctl start remna-tunnel
+```
+
+Проверка успешности запуска:
+
+```
+sudo systemctl status remna-tunnel
 ```
 
 Теперь метрики Remnawave и Node Exporter доступны по `http://localhost:9001/metrics` и `http://localhost:9002/metrics`.
