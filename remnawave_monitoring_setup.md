@@ -274,7 +274,7 @@ sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx -d sub.mydomain.com
 ```
 
-Автообновление:
+Автообновление сертификатов по crontab:
 
 ```bash
 0 5 * * * root certbot renew --quiet
