@@ -283,7 +283,7 @@ sudo certbot --nginx -d sub.mydomain.com
 ### Настройка конфига nginx
 
 ```
-nano/etc/nginx/sites-available/default
+nano /etc/nginx/sites-available/default
 ````
 
 <details>
