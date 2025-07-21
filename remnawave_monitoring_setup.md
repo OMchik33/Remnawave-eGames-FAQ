@@ -236,6 +236,11 @@ scrape_configs:
 
 > username и password из `.env` файла Remnawave (секция `### PROMETHEUS ###`)
 
+### Примечание: 
+
+**Докер должен быть установлен.** Если нет - установите его сейчас (docker и docker compose)
+
+
 Запуск:
 
 ```bash
