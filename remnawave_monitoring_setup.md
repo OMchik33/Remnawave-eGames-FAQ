@@ -280,6 +280,10 @@ sudo certbot --nginx -d sub.mydomain.com
 0 5 * * * root certbot renew --quiet
 ```
 
+```
+nano/etc/nginx/sites-available/default
+````
+
 <details>
   <summary>Пример конфигурации nginx</summary>
 
