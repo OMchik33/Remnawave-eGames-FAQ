@@ -240,6 +240,12 @@ scrape_configs:
 
 **Докер должен быть установлен.** Если нет - установите его сейчас (docker и docker compose)
 
+Пример установки Докера:
+
+```
+curl -L -o /root/docker_install.sh https://raw.githubusercontent.com/OMchik33/Remnawave-scripts/refs/heads/main/docker_install.sh && chmod +x /root/docker_install.sh && bash /root/docker_install.sh
+```
+
 
 Запуск:
 
