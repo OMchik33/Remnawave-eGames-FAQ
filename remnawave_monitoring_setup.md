@@ -141,16 +141,6 @@ mkdir -p /opt/monitoring/{grafana,prometheus}
   
 ```yaml
 services:
-#  uptime-kuma:
-#    image: louislam/uptime-kuma
-#    container_name: uptime-kuma
-#    restart: always
-#    ports:
-#      - "3001:3001"
-#    volumes:
-#      - ./uptime-kuma-data:/app/data
-#    network_mode: host
-      
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
