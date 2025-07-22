@@ -499,7 +499,7 @@ http {
 ```
 </details>
 
-**Применение конфигурации** nginx
+### Применение конфигурации nginx
 
 ```
 nginx -t && systemctl restart nginx
