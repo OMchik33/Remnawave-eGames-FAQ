@@ -252,7 +252,7 @@ curl -L -o /root/docker_install.sh https://raw.githubusercontent.com/OMchik33/Re
 ```
 
 
-Запуск:
+### Запуск всех контейнеров:
 
 ```bash
 cd /opt/monitoring
