@@ -567,6 +567,7 @@ Node Exporter доступен по `localhost:9002` (через SSH-тунне�
 
 
 </details>
+
 ---
 
 Открыть Prometheus `https://sub.mydomain.com/prometheus/graph?fd4gd54fg2dfg4241=1`
@@ -574,6 +575,8 @@ Node Exporter доступен по `localhost:9002` (через SSH-тунне�
 Открыть Grafana `https://sub.mydomain.com/grafana/`
 
 Открыть xray checker `https://sub.mydomain.com/checker/?fd4gd54fg2dfg4241=1`
+
+---
 
 Для визуализации node exporter:
 
