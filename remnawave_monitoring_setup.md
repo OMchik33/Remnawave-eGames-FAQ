@@ -405,6 +405,98 @@ server {
 ```
 
 Здесь `sub.mydomain.com` - адрес домена, прикрепленного к тестовому VPS, на котором устанавливаются Графана и Прометей
+
+`fd4gd54fg2dfg4241` - уникальное куки значение, можно заменить на свое
+</details>
+
+### Еще немного настроек nginx
+
+Редактируем `/etc/nginx/nginx.conf`
+
+добавляем туда:
+
+```
+        # Карта для WebSocket соединений Grafana
+        map $http_upgrade $connection_upgrade {
+        default upgrade;
+        '' close;
+        }
+```
+
+Пример дефолтного `nginx.conf` с добавлением нужной `map`
+
+<details>
+  <summary>Открыть пример</summary>
+  
+```
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+error_log /var/log/nginx/error.log;
+include /etc/nginx/modules-enabled/*.conf;
+
+events {
+        worker_connections 768;
+        # multi_accept on;
+}
+
+http {
+
+        ##
+        # Basic Settings
+        ##
+
+        sendfile on;
+        tcp_nopush on;
+        types_hash_max_size 2048;
+        # server_tokens off;
+
+        # server_names_hash_bucket_size 64;
+        # server_name_in_redirect off;
+
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+
+        # Карта для WebSocket соединений Grafana
+        map $http_upgrade $connection_upgrade {
+        default upgrade;
+        '' close;
+        }
+        ##
+        # SSL Settings
+        ##
+
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+        ssl_prefer_server_ciphers on;
+
+        ##
+        # Logging Settings
+        ##
+
+        access_log /var/log/nginx/access.log;
+
+        ##
+        # Gzip Settings
+        ##
+
+        gzip on;
+
+        # gzip_vary on;
+        # gzip_proxied any;
+        # gzip_comp_level 6;
+        # gzip_buffers 16 8k;
+        # gzip_http_version 1.1;
+        # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/jav>
+
+        ##
+        # Virtual Host Configs
+        ##
+
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
+}
+
+```
 </details>
 
 **Применение конфигурации** nginx
@@ -415,17 +507,7 @@ nginx -t && systemctl restart nginx
 
 ---
 
-## 📊 6. Проверка и настройка Grafana
-
-- Перейдите: `https://sub.mydomain.com/grafana`
-- Вход: `admin / admin`, затем смените пароль
-- Добавьте источник данных: **Prometheus**
-  - URL: `http://localhost:9090`
-- Перейдите в **Explore → Metrics → Grafana Drilldown → Metrics**
-
----
-
-## 🧠 7. Node Exporter
+## 🧠 6. Node Exporter
 
 Установка на сервер с Remnawave:
 
@@ -447,14 +529,49 @@ Node Exporter доступен по `localhost:9002` (через SSH-тунне�
 
 Или использовать SSH-туннели по аналогии.
 
-Для визуализации:
+## 📊 7. Проверка и настройка Grafana
+
+- Перейдите: `https://sub.mydomain.com/grafana`
+- Вход: `admin / admin`, затем смените пароль
+- Добавьте источник данных: **Prometheus**
+  - URL: `http://localhost:9090`
+- Перейдите в **Explore → Metrics → Grafana Drilldown → Metrics**
+
+<details>
+  <summary>Открыть скриншот с примером</summary>
+
+<img width="1012" height="768" alt="image" src="https://github.com/user-attachments/assets/522e1076-7c8d-4864-a4ea-d91404a64ee8" />
+
+
+</details>
+
+## ВАЖНО
+
+После всех манипуляций мы добавили в Grafana новый источник данных - Prometheus. Тепень необходимо самостоятельно создать новый Dashboard, добавляя в него необходимые инструменты мониторинга и подключая к ним нужные источники данных из Prometheus
+
+Проверить работоспособность источников данных (метрик) в Prometheus можно так:
+
+Зайдите по ссылке `https://sub.mydomain.com/prometheus/graph?fd4gd54fg2dfg4241=1`
+
+Открываете меню `Status` - `Target Health` и убеждаетесь, что напротив каждого источника данных стоит `UP`
+
+<details>
+  <summary>Открыть скриншот с примером</summary>
+
+<img width="1011" height="687" alt="image" src="https://github.com/user-attachments/assets/7c5c6b2b-fe97-41e2-aa9d-830f46bcec1e" />
+
+
+</details>
+---
+
+Для визуализации node exporter:
 
 - Dashboard ID: **1860**
 - [https://grafana.com/grafana/dashboards/1860](https://grafana.com/grafana/dashboards/1860)
 
 ---
 
-## 📙 Полезные ссылки
+## 📙 Полезные ссылки (примеры Dashboard Remnawave)
 
 - [Remnawave Telegram метрики #1](https://t.me/c/2409638119/3118)
 - [Remnawave Telegram метрики #2](https://t.me/c/2409638119/43140)
